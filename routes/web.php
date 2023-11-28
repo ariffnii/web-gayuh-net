@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\UserController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +22,10 @@ Route::get('/beranda', function () {
 Route::get('admin/data-pegawai', function () {
     return view('admin/data-pegawai');
 });
+Route::get('admin/data-pelanggan', function () {
+    return view('admin/data-pelanggan');
+});
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

@@ -70,8 +70,10 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Data Transaksi</div>
+                <i class="menu-icon tf-icons bx bx-receipt"></i>
+                <div data-i18n="Layouts">
+                    Data Transaksi
+                </div>
             </a>
 
             <ul class="menu-sub">
@@ -98,7 +100,7 @@
         </li>
         <li class="menu-item">
             <a href="icons-boxicons.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-crown"></i>
+                <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Boxicons">Data Layanan</div>
             </a>
         </li>
@@ -120,8 +122,8 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">Data Pengguna</div>
+                    <a href="{{ url('admin/data-pelanggan') }}" class="menu-link">
+                        <div data-i18n="Without navbar">Data Pelanggan</div>
                     </a>
                 </li>
             </ul>

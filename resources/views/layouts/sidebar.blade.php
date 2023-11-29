@@ -117,18 +117,13 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ url('admin/data-pegawai') }}" class="menu-link">
+                    <a href="{{ route('user.index') }}" class="menu-link">
                         <div data-i18n="Without menu">Data Pegawai</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="{{ url('admin/data-pelanggan') }}" class="menu-link">
                         <div data-i18n="Without navbar">Data Pelanggan</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('user.index') }}" class="menu-link">
-                        <div data-i18n="Without navbar">Data Akun</div>
                     </a>
                 </li>
             </ul>

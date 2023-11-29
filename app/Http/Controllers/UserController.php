@@ -12,9 +12,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $models = Model::latest()->paginate(50);
-        $data['models'] = $models;
-        return view('operator.user_index', $data);
+        return view('operator.user_index', [
+            'models' => Model::where('akses', '<>', 'pelanggan')
+                ->latest()
+                ->paginate(50)
+        ]);
     }
 
     /**
@@ -22,7 +24,13 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'model' => new \App\Models\User(),
+            'method' => 'POST',
+            'route' => 'user.store',
+            'button' => 'SIMPAN'
+        ];
+        return view('operator.user_form', $data);
     }
 
     /**
@@ -30,7 +38,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requestData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'akses' => 'required|in:petugas,admin',
+            'password' => 'required'
+        ]);
+        $requestData['password'] = bcrypt($requestData['password']);
+        $requestData['email_verified_at'] = now();
+        Model::create($requestData);
+        flash('Data Berhasil disimpan');
+        return back();
     }
 
     /**

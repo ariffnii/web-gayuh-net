@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\BerandaOperatorController;
 use App\Http\Controllers\BerandaPelangganController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,17 +24,13 @@ Route::get('/', function () {
 Route::get('/beranda', function () {
     return view('index');
 });
-Route::get('admin/data-pegawai', function () {
-    return view('admin/data-pegawai');
-});
-Route::get('admin/data-pelanggan', function () {
-    return view('admin/data-pelanggan');
-});
+
 Auth::routes();
 
 Route::prefix('operator')->middleware(['auth', 'auth.operator'])->group(function () {
     //ini route untuk operator
     Route::get('beranda', [BerandaOperatorController::class, 'index'])->name('operator.beranda');
+    Route::resource('user', UserController::class );
 });
 
 Route::prefix('pelanggan')->middleware(['auth', 'auth.pelanggan'])->group(function () {

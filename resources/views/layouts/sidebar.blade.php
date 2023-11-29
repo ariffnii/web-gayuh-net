@@ -58,9 +58,9 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item active">
-            <a href="{{ url('/beranda') }}" class="menu-link">
+            <a href="{{ route('operator.beranda') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">Beranda</div>
             </a>
         </li>
 
@@ -124,6 +124,11 @@
                 <li class="menu-item">
                     <a href="{{ url('admin/data-pelanggan') }}" class="menu-link">
                         <div data-i18n="Without navbar">Data Pelanggan</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('user.index') }}" class="menu-link">
+                        <div data-i18n="Without navbar">Data Akun</div>
                     </a>
                 </li>
             </ul>

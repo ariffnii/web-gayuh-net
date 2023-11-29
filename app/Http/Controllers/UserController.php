@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User as Model;
 
 class UserController extends Controller
 {
@@ -11,7 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $models = Model::latest()->paginate(50);
+        $data['models'] = $models;
+        return view('operator.user_index', $data);
     }
 
     /**

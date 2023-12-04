@@ -64,7 +64,13 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = [
+            'model' => \App\Models\User::findOrFail($id),
+            'method' => 'PUT',
+            'route' => ['user.update', $id],
+            'button' => 'UPDATE'
+        ];
+        return view('operator.user_form', $data);
     }
 
     /**
@@ -72,7 +78,22 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $requestData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,' .$id,
+            'akses' => 'required|in:operator,admin',
+            'password' => 'nullable',
+        ]);
+        $model = Model::findOrFail($id);
+        if($requestData['password']==""){
+            unset($requestData['password']);
+        } else{
+            $requestData['password'] = bcrypt($requestData['pasword']);
+        }
+        $model->fill($requestData);
+        $model->save();
+        flash('Data Berhasil Diubah');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -80,6 +101,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $model = Model::findOrFail($id);
+        $model->delete();
+        flash("Data Berhasil Dihapus");
+        return back();
     }
 }

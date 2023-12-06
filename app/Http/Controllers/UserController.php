@@ -41,7 +41,7 @@ class UserController extends Controller
         $requestData = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users',
-            'akses' => 'required|in:petugas,admin',
+            'akses' => 'required|in:operator,admin',
             'password' => 'required'
         ]);
         $requestData['password'] = bcrypt($requestData['password']);
@@ -80,7 +80,7 @@ class UserController extends Controller
     {
         $requestData = $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:users,' .$id,
+            'email' => 'required|unique:users,email,'.$id,
             'akses' => 'required|in:operator,admin',
             'password' => 'nullable',
         ]);
@@ -88,7 +88,7 @@ class UserController extends Controller
         if($requestData['password']==""){
             unset($requestData['password']);
         } else{
-            $requestData['password'] = bcrypt($requestData['pasword']);
+            $requestData['password'] = bcrypt($requestData['password']);
         }
         $model->fill($requestData);
         $model->save();

@@ -12,7 +12,7 @@ project ini dibuat oleh:
 - Arif Rahmaanul hakim as backend
 - Fathur Rahman Sidiq as backend
 - Shandy Fakri as frontend
-- Muhammad Fakri Al-Farizi as ui & ux desigm
+- Muhammad Fakri Al-Farizi as ui & ux designer
 
 ## How to clone this project
 

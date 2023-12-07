@@ -20,10 +20,13 @@ use App\Http\Controllers\BerandaPelangganController;
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing-page');
 });
 Route::get('/beranda', function () {
     return view('index');
+});
+Route::get('/gin', function () {
+    return view('auth.login-sneat');
 });
 
 Auth::routes();

@@ -14,6 +14,6 @@ project ini dibuat oleh:
 - Shandy Fakri as frontend
 - Muhammad Fakri Al-Farizi as ui & ux designer
 
-## How to clone this project
+## How to clone this projectt
 
 

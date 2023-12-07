@@ -7,12 +7,16 @@ use App\Models\User as Model;
 
 class UserController extends Controller
 {
+    private $viewIndex = 'user_index';
+    private $viewCreate = 'user_form';
+    private $viewEdit = 'user_form';
+    private $routePrefix = 'user';
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('operator.user_index', [
+        return view('operator.' . $this->viewIndex, [
             'models' => Model::where('akses', '<>', 'pelanggan')
                 ->latest()
                 ->paginate(50)
@@ -25,12 +29,12 @@ class UserController extends Controller
     public function create()
     {
         $data = [
-            'model' => new \App\Models\User(),
+            'model' => new Model(),
             'method' => 'POST',
-            'route' => 'user.store',
+            'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN'
         ];
-        return view('operator.user_form', $data);
+        return view('operator.' . $this->viewCreate, $data);
     }
 
     /**
@@ -48,7 +52,7 @@ class UserController extends Controller
         $requestData['email_verified_at'] = now();
         Model::create($requestData);
         flash('Data Berhasil disimpan');
-        return back();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -65,12 +69,12 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $data = [
-            'model' => \App\Models\User::findOrFail($id),
+            'model' => Model::findOrFail($id),
             'method' => 'PUT',
-            'route' => ['user.update', $id],
+            'route' => [$this->routePrefix.'.update', $id],
             'button' => 'UPDATE'
         ];
-        return view('operator.user_form', $data);
+        return view('operator.' . $this->viewEdit, $data);
     }
 
     /**

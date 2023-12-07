@@ -122,7 +122,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ url('admin/data-pelanggan') }}" class="menu-link">
+                    <a href="{{ route('pelanggan.index') }}" class="menu-link">
                         <div data-i18n="Without navbar">Data Pelanggan</div>
                     </a>
                 </li>

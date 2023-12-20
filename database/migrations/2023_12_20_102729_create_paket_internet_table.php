@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('faktur', function (Blueprint $table) {
+        Schema::create('paket_internet', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_paket');
+            $table->string('kecepatan_download');
+            $table->string('kecepatan_upload');
+            $table->integer('harga');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('faktur');
+        Schema::dropIfExists('paket_internet');
     }
 };

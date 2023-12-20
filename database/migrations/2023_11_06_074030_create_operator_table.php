@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pelanggan', function (Blueprint $table) {
+        Schema::create('operator', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_users');
             $table->foreign('id_users')->references('id')->on('users');
@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('tanggal_lahir');
             $table->string('telepon');
+            $table->string('nip');
             $table->enum('jenis_kelamin', ['perempuan', 'laki_laki']);
             $table->timestamps();
         });
@@ -30,10 +31,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pelanggan', function (Blueprint $table) {
-            $table->dropForeign('pelanggan_id_users_foreign');
+        Schema::table('operator', function (Blueprint $table) {
+            $table->dropForeign('operator_id_users_foreign');
             $table->dropColumn('id_users');
         });
-        Schema::dropIfExists('pelanggan');
+        Schema::dropIfExists('operator');
     }
 };

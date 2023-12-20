@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('riwayat_penggunaan', function (Blueprint $table) {
+        Schema::create('jangkauan_internet', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_kelurahan');
+            $table->enum('ketersediaan_internet', ['tersedia', 'tidak_tersedia']);
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('riwayat_penggunaan');
+        Schema::dropIfExists('jangkauan_internet');
     }
 };

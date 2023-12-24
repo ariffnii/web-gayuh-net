@@ -36,19 +36,6 @@
             <li><a href="">Product</a></li>
             <li><a href="">special deals</a></li>
             <li><a href="">E-official store</a></li>
-            <li>
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ route('logout') }}" class="ctta">Foto</a>
-                    @else
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ctta">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-            </li>
         </ul>
 
         <div class="bx bx-menu" id="menu-icon"></div>
@@ -60,18 +47,8 @@
             <h4>Cibeng</h4>
             <h1>NIKMATI BERBAGAI PENAWARAN TERBAIK</h1>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed, cum iste! Velit</p>
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ route('logout') }}">Pilih Paket</a>
-                    @else
-                        @if (Route::has('register'))
-                        <a href="#">SHandy</a>
-                        <a href="{{ route('login') }}" class="ctta"><i class="ri-login-box-fill"></i>Login ey</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+            <a href="#">SHandy</a>
+            <a href="{{ route('login') }}" class="ctta"><i class="ri-login-box-fill"></i>Login ey</a>
         </div>
 
         <div class="hero-img">

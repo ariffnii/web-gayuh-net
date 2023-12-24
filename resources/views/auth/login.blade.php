@@ -46,7 +46,7 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Register') }}
                 </button>
-                <a href="index.html">Back</a>
+                <a href="{{ url('/') }}">Back</a>
             </form>
         </div>
         <div class="form-container sign-in">
@@ -75,7 +75,7 @@
                 <button type="submit" class="btn btn-primary">
                     {{ __('Login') }}
                 </button>
-                <a href="index.html">Back</a>
+                <a href="{{ url('/') }}">Back</a>
             </form>
         </div>
         <div class="toggle-container">

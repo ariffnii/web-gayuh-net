@@ -8,6 +8,6 @@ class BerandaPelangganController extends Controller
 {
     public function index()
     {
-        return view('pelanggan.beranda_index');
+        return view('landing-page');
     }
 }

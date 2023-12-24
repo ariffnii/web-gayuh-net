@@ -2,10 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pelanggan extends Model
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
+    protected $fillable = [
+        'nama_depan',
+        'nama_depan',
+        'alamat',
+        'tanggal_lahir',
+        'telepon',
+        'jenis_kelamin',
+    ];
+
 }

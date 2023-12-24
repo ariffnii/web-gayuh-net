@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_paket');
             $table->string('kecepatan_download');
             $table->string('kecepatan_upload');
+            $table->integer('biaya_pasang');
             $table->integer('harga');
             $table->string('deskripsi');
             $table->timestamps();

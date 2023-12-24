@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_pelanggan');
             $table->foreign('id_pelanggan')->references('id')->on('pelanggan');
+            $table->date('tanggal_pengaduan');
             $table->enum('kategori', ['koneksi', 'gangguan', 'alat', 'lainnya']);
             $table->string('deskripsi');
             $table->enum('status', ['menunggu', 'proses', 'selesai']);

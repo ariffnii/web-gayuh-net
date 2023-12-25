@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('tanggal_lahir');
             $table->string('telepon');
             $table->enum('jenis_kelamin', ['perempuan', 'laki_laki']);
+            $table->string('foto_profil')->nullable();
             $table->timestamps();
         });
     }

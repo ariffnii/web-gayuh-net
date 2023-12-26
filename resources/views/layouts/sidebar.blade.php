@@ -57,7 +57,8 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        @if (Auth::user()->akses == 'operator')
+        <li class="menu-item {{ \Route::is('operator.beranda') ? 'active' : '' }}">
             <a href="{{ route('operator.beranda') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Beranda</div>
@@ -87,9 +88,62 @@
                         <div data-i18n="Without navbar">Nomor Rekening</div>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="layouts-without-navbar.html" class="menu-link">
+                        <div data-i18n="Without navbar">Data Tagihan</div>
+                    </a>
+                </li>
             </ul>
         </li>
-
+        <!-- Produk -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Produk</span></li>
+        <li class="menu-item">
+            <a href="cards-basic.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Data Paket</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="icons-boxicons.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Boxicons">Data Berlanganan</div>
+            </a>
+        </li>
+        <!--Costumer service-->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">CS</span>
+        </li>
+        <li class="menu-item">
+            <a href="layouts-without-navbar.html" class="menu-link">
+                <div data-i18n="Without navbar">Pengaduan</div>
+            </a>
+        </li>
+        {{-- Lain-Lain --}}
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Misc</span>
+        </li>
+        <li class="menu-item">
+            <a href="icons-boxicons.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Boxicons">Jangkauan Layanan</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="icons-boxicons.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Boxicons">Settings</div>
+            </a>
+        </li>
+        @endif
+         
+        {{-- Khusus Admin --}}
+        @if (Auth::user()->akses == 'admin')
+        <li class="menu-item {{ \Route::is('admin.beranda') ? 'active' : '' }}">
+            <a href="{{ route('admin.beranda') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Beranda</div>
+            </a>
+        </li>
         <!-- Produk -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Produk</span></li>
         <li class="menu-item">
@@ -104,9 +158,47 @@
                 <div data-i18n="Boxicons">Data Layanan</div>
             </a>
         </li>
-
+        <li class="menu-item">
+            <a href="icons-boxicons.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Boxicons">Data Berlanganan</div>
+            </a>
+        </li>
+        <!-- Data Transaksi -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Transaksi</span>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-receipt"></i>
+                <div data-i18n="Layouts">
+                    Data Transaksi
+                </div>
+            </a>
+            
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="layouts-without-menu.html" class="menu-link">
+                        <div data-i18n="Without menu">Riwayat Transaksi</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="layouts-without-navbar.html" class="menu-link">
+                        <div data-i18n="Without navbar">Nomor Rekening</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--Costumer service-->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">CS</span>
+        </li>
+        <li class="menu-item">
+            <a href="layouts-without-navbar.html" class="menu-link">
+                <div data-i18n="Without navbar">Pengaduan</div>
+            </a>
+        </li>
         <!-- Data User -->
-        @if (Auth::user()->akses == 'admin')
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data User</span>
         </li>
@@ -116,19 +208,34 @@
                 <div data-i18n="Layouts">Data User</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item {{ \Route::is('user.*') ? 'active' : '' }}"">
                     <a href="{{ route('user.index') }}" class="menu-link">
                         <div data-i18n="Without menu">Data Pegawai</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ \Route::is('pelanggan.*') ? 'active' : '' }}"">
                     <a href="{{ route('pelanggan.index') }}" class="menu-link">
                         <div data-i18n="Without navbar">Data Pelanggan</div>
                     </a>
                 </li>
             </ul>
         </li>
+        {{-- Lain-Lain --}}
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Misc</span>
+        </li>
+        <li class="menu-item">
+            <a href="icons-boxicons.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Boxicons">Jangkauan Layanan</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="icons-boxicons.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Boxicons">Settings</div>
+            </a>
+        </li>
         @endif
-        {{-- Data User  --}}
     </ul>
 </aside>

@@ -7,18 +7,18 @@ use App\Models\User as Model;
 
 class UserController extends Controller
 {
-    private $viewIndex = 'user_index';
-    private $viewCreate = 'user_form';
-    private $viewEdit = 'user_form';
+    private $viewIndex = 'pegawai_index';
+    private $viewCreate = 'pegawai_form';
+    private $viewEdit = 'pegawai_form';
     private $routePrefix = 'user';
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('operator.' . $this->viewIndex, [
-            'models' => Model::
-                latest()
+        return view('admin.' . $this->viewIndex, [
+            'dataPegawai' => Model::where('akses', '<>', 'pelanggan')
+                ->latest()
                 ->paginate(50)
         ]);
     }
@@ -29,12 +29,12 @@ class UserController extends Controller
     public function create()
     {
         $data = [
-            'model' => new Model(),
+            'modelPegawai' => new Model(),
             'method' => 'POST',
             'route' => $this->routePrefix . '.store',
             'button' => 'SIMPAN'
         ];
-        return view('operator.' . $this->viewCreate, $data);
+        return view('admin.' . $this->viewCreate, $data);
     }
 
     /**
@@ -69,12 +69,12 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $data = [
-            'model' => Model::findOrFail($id),
+            'modelPegawai' => Model::findOrFail($id),
             'method' => 'PUT',
             'route' => [$this->routePrefix.'.update', $id],
             'button' => 'UPDATE'
         ];
-        return view('operator.' . $this->viewEdit, $data);
+        return view('admin.' . $this->viewEdit, $data);
     }
 
     /**
@@ -88,14 +88,14 @@ class UserController extends Controller
             'akses' => 'required|in:operator,admin',
             'password' => 'nullable',
         ]);
-        $model = Model::findOrFail($id);
+        $modelPegawai = Model::findOrFail($id);
         if($requestData['password']==""){
             unset($requestData['password']);
         } else{
             $requestData['password'] = bcrypt($requestData['password']);
         }
-        $model->fill($requestData);
-        $model->save();
+        $modelPegawai->fill($requestData);
+        $modelPegawai->save();
         flash('Data Berhasil Diubah');
         return redirect()->route('user.index');
     }
@@ -105,8 +105,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $model = Model::findOrFail($id);
-        $model->delete();
+        $modelPegawai = Model::findOrFail($id);
+        $modelPegawai->delete();
         flash("Data Berhasil Dihapus");
         return back();
     }

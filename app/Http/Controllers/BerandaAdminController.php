@@ -3,23 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pelanggan as Model;
 
-
-class PelangganController extends Controller
+class BerandaAdminController extends Controller
 {
-    private $viewIndex = 'pelanggan_index';
-    private $routePrefix = 'pelanggan';
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.' . $this->viewIndex, [
-            'dataPelanggan' => Model::
-                latest()
-                ->paginate(50)
-        ]);
+        return view('admin.beranda_index');
     }
 
     /**
@@ -67,9 +59,6 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-        $modelPelanggan = Model::findOrFail($id);
-        $modelPelanggan->delete();
-        flash("Data Berhasil Dihapus");
-        return back();
+        //
     }
 }

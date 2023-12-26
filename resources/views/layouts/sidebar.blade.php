@@ -106,15 +106,15 @@
         </li>
 
         <!-- Data User -->
+        @if (Auth::user()->akses == 'admin')
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data User</span>
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Layouts">Data User</div>
             </a>
-
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="{{ route('user.index') }}" class="menu-link">
@@ -128,5 +128,7 @@
                 </li>
             </ul>
         </li>
+        @endif
+        {{-- Data User  --}}
     </ul>
 </aside>

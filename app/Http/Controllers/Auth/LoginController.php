@@ -42,9 +42,12 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {
-        if ($user->akses == 'operator' || $user->akses == 'admin'){
+        if ($user->akses == 'operator'){
             return redirect()->route('operator.beranda');
-        } elseif ($user->akses == 'pelanggan'){
+        } elseif ($user->akses == 'admin') {
+            return redirect()->route('admin.beranda');
+        }
+        elseif ($user->akses == 'pelanggan'){
             return redirect()->route('pelanggan.beranda');
         } else {
             Auth::logout();

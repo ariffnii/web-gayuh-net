@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_depan');
             $table->string('nama_belakang');
             $table->string('alamat');
-            $table->string('tanggal_lahir');
+            $table->date('tanggal_lahir');
             $table->string('telepon');
             $table->enum('jenis_kelamin', ['perempuan', 'laki_laki']);
             $table->string('foto_profil')->nullable();

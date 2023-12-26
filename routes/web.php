@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\BerandaAdminController;
 use App\Http\Controllers\BerandaOperatorController;
 use App\Http\Controllers\BerandaPelangganController;
 
@@ -32,11 +33,16 @@ Route::get('/gin', function () {
 
 Auth::routes();
 
+Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
+    //ini route untuk admin
+    Route::get('beranda', [BerandaAdminController::class, 'index'])->name('admin.beranda');
+    Route::resource('user', UserController::class );
+    Route::resource('pelanggan', PelangganController::class);
+});
+
 Route::prefix('operator')->middleware(['auth', 'auth.operator'])->group(function () {
     //ini route untuk operator
     Route::get('beranda', [BerandaOperatorController::class, 'index'])->name('operator.beranda');
-    Route::resource('user', UserController::class );
-    Route::resource('pelanggan', PelangganController::class);
 });
 
 Route::prefix('pelanggan')->middleware(['auth', 'auth.pelanggan'])->group(function () {

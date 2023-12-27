@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\BerandaAdminController;
+use App\Http\Controllers\PaketInternetController;
 use App\Http\Controllers\BerandaOperatorController;
 use App\Http\Controllers\BerandaPelangganController;
 
@@ -38,6 +39,7 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
     Route::get('beranda', [BerandaAdminController::class, 'index'])->name('admin.beranda');
     Route::resource('user', UserController::class );
     Route::resource('pelanggan', PelangganController::class);
+    Route::resource('paket_internet', PaketInternetController::class);
 });
 
 Route::prefix('operator')->middleware(['auth', 'auth.operator'])->group(function () {

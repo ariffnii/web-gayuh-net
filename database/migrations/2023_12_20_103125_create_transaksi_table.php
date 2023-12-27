@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('id_pelanggan')->references('id')->on('pelanggan');
             $table->date('tanggal_transaksi');
             $table->enum('metode_pembayaran', ['cash', 'transfer']);
-            $table->binary('bukti_transaksi');
+            $table->string('bukti_transaksi')->nullable();
             $table->timestamps();
         });
     }

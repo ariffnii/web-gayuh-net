@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Pelanggan as Model;
 
@@ -15,11 +16,13 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        return view('admin.' . $this->viewIndex, [
-            'dataPelanggan' => Model::
-                latest()
+        $data = [
+            'dataPelanggan' => User::with('pelanggan')
+                ->where('akses', '=', 'pelanggan')
+                ->latest()
                 ->paginate(50)
-        ]);
+        ];
+        return view('admin.' . $this->viewIndex, $data);
     }
 
     /**

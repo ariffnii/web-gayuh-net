@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pelanggan extends Model
 {
@@ -28,6 +30,12 @@ class Pelanggan extends Model
         'foto_profil',
     ];
 
+    public function user(){
+        $users = DB::table('users', 'users.id', '=', 'pelanggan.id_users')
+        ->select('pelanggan.*', 'users.name', 'users.email')
+        ->where('users.akses', '=', 'pelanggan');
+        return $this->belongsTo(User::class, "id");
+    }
     public function pengaduan(): HasMany
     {
         return $this->hasMany(Pengaduan::class);

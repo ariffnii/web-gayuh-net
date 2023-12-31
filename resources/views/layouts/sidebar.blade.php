@@ -146,7 +146,7 @@
             </li>
             <!-- Produk -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Produk</span></li>
-            <li class="menu-item {{ \Route::is('admin.*') ? 'active' : '' }}">
+            <li class="menu-item {{ \Route::is('paket_internet.*') ? 'active' : '' }}">
                 <a href="{{ route('paket_internet.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-collection"></i>
                     <div data-i18n="Basic">Data Paket</div>
@@ -226,8 +226,8 @@
                 <span class="menu-header-text">Misc</span>
             </li>
             <li class="menu-item">
-                <a href="icons-boxicons.html" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                <a href="" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-map"></i>
                     <div data-i18n="Boxicons">Jangkauan Layanan</div>
                 </a>
             </li>

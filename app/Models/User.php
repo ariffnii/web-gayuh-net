@@ -46,7 +46,7 @@ class User extends Authenticatable
     ];
 
     public function pelanggan(): HasOne{
-        return $this->hasOne(Pelanggan::class);
+        return $this->hasOne(Pelanggan::class, "id_users");
     }
     public function operator(): HasOne{
         return $this->hasOne(Operator::class);

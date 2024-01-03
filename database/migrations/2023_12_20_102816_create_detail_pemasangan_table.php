@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_pelanggan');
             $table->foreign('id_pelanggan')->references('id')->on('pelanggan');
-            $table->unsignedBigInteger('id_operator');
-            $table->foreign('id_operator')->references('id')->on('operator');
-            $table->date('tanggal_pemasangan');
-            $table->string('lokasi_instalasi');
+            $table->unsignedBigInteger('id_paket_internet');
+            $table->foreign('id_paket_internet')->references('id')->on('paket_internet');
+            $table->date('tanggal_permintaan');
+            $table->date('tanggal_pemasangan')->nullable();
             $table->string('keterangan');
             $table->enum('status', ['menunggu', 'proses', 'selesai']);
             $table->timestamps();
@@ -33,8 +33,8 @@ return new class extends Migration
         Schema::table('detail_pemasangan', function (Blueprint $table) {
             $table->dropForeign('detail_pemasangan_id_pelanggan_foreign');
             $table->dropColumn('id_pelanggan');
-            $table->dropForeign('detail_pemasangan_id_operator_foreign');
-            $table->dropColumn('id_operator');
+            $table->dropForeign('detail_pemasangan_id_paket_internet_foreign');
+            $table->dropColumn('id_paket_internet');
         });
         Schema::dropIfExists('detail_pemasangan');
     }

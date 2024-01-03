@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('kecepatan_baru');
             $table->enum('status', ['menunggu', 'disetujui', 'ditolak']);
             $table->date('tanggal_permintaan');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

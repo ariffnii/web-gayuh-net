@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('id_pelanggan')->references('id')->on('pelanggan');
             $table->unsignedBigInteger('id_paket_internet');
             $table->foreign('id_paket_internet')->references('id')->on('paket_internet');
-            $table->enum('status', ['berlangganan', 'tidak_berlangganan']);
+            $table->enum('status', ['YA', 'TIDAK']);
             $table->timestamps();
         });
     }

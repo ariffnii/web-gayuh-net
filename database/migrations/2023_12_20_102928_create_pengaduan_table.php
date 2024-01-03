@@ -16,10 +16,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pelanggan');
             $table->foreign('id_pelanggan')->references('id')->on('pelanggan');
             $table->date('tanggal_pengaduan');
-            $table->enum('kategori', ['koneksi', 'gangguan', 'alat', 'lainnya']);
+            $table->enum('kategori', ['koneksi', 'gangguan', 'alat', 'lain']);
             $table->string('deskripsi');
             $table->enum('status', ['menunggu', 'proses', 'selesai']);
-            $table->date('tanggal_penyelesaian');
+            $table->date('tanggal_penyelesaian')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

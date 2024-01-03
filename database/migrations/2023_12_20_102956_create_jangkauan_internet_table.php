@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('jangkauan_internet', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kelurahan');
-            $table->enum('ketersediaan_internet', ['tersedia', 'tidak_tersedia']);
+            $table->enum('ketersediaan_internet', ['YA', 'TIDAK']);
             $table->timestamps();
         });
     }

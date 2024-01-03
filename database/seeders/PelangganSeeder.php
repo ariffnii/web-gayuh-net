@@ -21,7 +21,7 @@ class PelangganSeeder extends Seeder
             'alamat' => 'Benda',
             'tanggal_lahir' => Carbon::make('2000-11-3'),
             'telepon' => '0823123231',
-            'jenis_kelamin' => 'laki_laki',
+            'jenis_kelamin' => 'L',
         ]);
     }
 }

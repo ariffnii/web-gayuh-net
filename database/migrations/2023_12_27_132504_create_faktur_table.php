@@ -17,8 +17,7 @@ return new class extends Migration
             $table->foreign('id_transaksi')->references('id')->on('transaksi');
             $table->date('tanggal_pembuatan');
             $table->date('tanggal_jatuh_tempo');
-            $table->integer('total_pembayaran');
-            $table->enum('status_pembayaran', ['belum', 'sudah']);
+            $table->integer('total_bayar');
             $table->timestamps();
         });
     }

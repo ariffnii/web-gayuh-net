@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_users');
             $table->foreign('id_users')->references('id')->on('users');
-            $table->string('nama_depan');
-            $table->string('nama_belakang');
-            $table->string('alamat');
-            $table->date('tanggal_lahir');
-            $table->string('telepon');
-            $table->enum('jenis_kelamin', ['perempuan', 'laki_laki']);
-            $table->string('foto_profil')->nullable();
+            $table->string('nama_depan')->nullable();
+            $table->string('nama_belakang')->nullable();
+            $table->string('alamat')->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('telepon')->nullable();
+            $table->enum('jenis_kelamin', ['P', 'L'])->nullable();
             $table->timestamps();
         });
     }

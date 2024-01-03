@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Operator extends Model
@@ -28,8 +29,8 @@ class Operator extends Model
         'jenis_kelamin',
     ];
 
-    public function detail_pemasangan(): HasOne
+    public function user()
     {
-        return $this->hasOne(DetailPemasangan::class);
+        return $this->belongsTo(User::class, "id_users");
     }
 }

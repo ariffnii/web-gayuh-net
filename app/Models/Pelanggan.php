@@ -34,22 +34,22 @@ class Pelanggan extends Model
         $users = DB::table('users', 'users.id', '=', 'pelanggan.id_users')
         ->select('pelanggan.*', 'users.name', 'users.email')
         ->where('users.akses', '=', 'pelanggan');
-        return $this->belongsTo(User::class, "id");
+        return $this->belongsTo(User::class, "id_users");
     }
     public function pengaduan(): HasMany
     {
-        return $this->hasMany(Pengaduan::class);
+        return $this->hasMany(Pengaduan::class, "id_pelanggan");
     }
     public function langganan(): HasOne{
-        return $this->hasOne(Langganan::class);
+        return $this->hasOne(Langganan::class, "id_pelanggan");
     }
     public function transaksi(): HasOne{
-        return $this->hasOne(Transaksi::class);
+        return $this->hasOne(Transaksi::class, "id_pelanggan");
     }
     public function peningkatan_kecepatan(): HasOne{
-        return $this->hasOne(PeningkatanKecepatan::class);
+        return $this->hasOne(PeningkatanKecepatan::class, "id_pelanggan");
     }
     public function detail_pemasangan(): HasOne{
-        return $this->hasOne(DetailPemasangan::class);
+        return $this->hasOne(DetailPemasangan::class, "id_pelanggan");
     }
 }

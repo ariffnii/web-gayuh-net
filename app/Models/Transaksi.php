@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Pelanggan;
+use App\Models\PaketInternet;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
@@ -26,6 +28,15 @@ class Transaksi extends Model
 
     public function faktur(): HasOne
     {
-        return $this->hasOne(Faktur::class);
+        return $this->hasOne(Faktur::class, "id_transaksi");
     }
+    public function detail_pemasangan()
+    {
+        return $this->belongsTo(DetailPemasangan::class, "id_pemasangan");
+    }
+    public function pelanggan()
+    {
+        return $this->belongsTo(Pelanggan::class, "id_pelanggan");
+    }
+
 }

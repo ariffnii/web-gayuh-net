@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\DetailPemasangan;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class PaketInternet extends Model
 {
@@ -29,14 +30,14 @@ class PaketInternet extends Model
 
     public function langganan(): HasOne
     {
-        return $this->hasOne(Langganan::class);
+        return $this->hasOne(Langganan::class, "id_paket_internet");
     }
-    public function transaksi(): HasOne
+    public function peningkatankecepatan(): HasOne
     {
-        return $this->hasOne(Transaksi::class);
+        return $this->hasOne(PeningkatanKecepatan::class, "id_paket_internet");
     }
-    public function peningkatan_kecepatan(): HasOne
+    public function detailpemasangan(): HasOne
     {
-        return $this->hasOne(PeningkatanKecepatan::class);
+        return $this->hasOne(DetailPemasangan::class, "id_paket_internet");
     }
 }

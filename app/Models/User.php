@@ -49,6 +49,6 @@ class User extends Authenticatable
         return $this->hasOne(Pelanggan::class, "id_users");
     }
     public function operator(): HasOne{
-        return $this->hasOne(Operator::class);
+        return $this->hasOne(Operator::class, "id_users");
     }
 }

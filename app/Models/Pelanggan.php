@@ -31,9 +31,6 @@ class Pelanggan extends Model
     ];
 
     public function user(){
-        $users = DB::table('users', 'users.id', '=', 'pelanggan.id_users')
-        ->select('pelanggan.*', 'users.name', 'users.email')
-        ->where('users.akses', '=', 'pelanggan');
         return $this->belongsTo(User::class, "id_users");
     }
     public function pengaduan(): HasMany

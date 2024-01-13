@@ -11,9 +11,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">No</th>
-                                    <th class="text-center">Username</th>
                                     <th class="text-center">Nama</th>
-                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Alamat</th>
                                     <th class="text-center">Telepon</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
@@ -22,10 +21,9 @@
                                 @forelse ($dataPelanggan as $item)
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td class="text-center">{{ $item->name }}</td>
-                                        <td class="text-center">{{ $item->pelanggan->nama_depan }} {{ $item->pelanggan->nama_belakang }}</td>
-                                        <td class="text-center">{{ $item->email }}</td>
-                                        <td class="text-center">{{ $item->pelanggan->telepon }}</td>
+                                        <td class="text-center">{{ $item->nama_depan }} {{ $item->nama_belakang }}</td>
+                                        <td class="text-center">{{ $item->alamat }}</td>
+                                        <td class="text-center">{{ $item->telepon }}</td>
                                         <td class="text-center">
                                             {!! Form::open([
                                                 'route' => ['pelanggan.destroy', $item->id],

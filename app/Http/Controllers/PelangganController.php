@@ -17,10 +17,9 @@ class PelangganController extends Controller
     public function index()
     {
         $data = [
-            'dataPelanggan' => User::with('pelanggan')
-                ->where('akses', '=', 'pelanggan')
-                ->latest()
-                ->paginate(50)
+            'dataPelanggan' => Model::
+                latest()
+                ->paginate(15)
         ];
         return view('admin.' . $this->viewIndex, $data);
     }

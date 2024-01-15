@@ -209,12 +209,12 @@
                     <div data-i18n="Layouts">Data User</div>
                 </a>
                 <ul class="menu-sub">
-                    <li class="menu-item {{ \Route::is('user.*') ? 'active' : '' }}"">
+                    <li class="menu-item {{ \Route::is('user.*') ? 'active' : '' }}">
                         <a href="{{ route('user.index') }}" class="menu-link">
                             <div data-i18n="Without menu">Data Pegawai</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ \Route::is('pelanggan.*') ? 'active' : '' }}"">
+                    <li class="menu-item {{ \Route::is('pelanggan.*') ? 'active' : '' }}">
                         <a href="{{ route('pelanggan.index') }}" class="menu-link">
                             <div data-i18n="Without navbar">Data Pelanggan</div>
                         </a>
@@ -225,8 +225,8 @@
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Misc</span>
             </li>
-            <li class="menu-item">
-                <a href="" class="menu-link">
+            <li class="menu-item {{ \Route::is('jangkauan_internet.*') ? 'active' : '' }}">
+                <a href="{{ route('jangkauan_internet.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-map"></i>
                     <div data-i18n="Boxicons">Jangkauan Layanan</div>
                 </a>

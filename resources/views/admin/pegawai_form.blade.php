@@ -6,7 +6,7 @@
             <div class="card">
                 <h5 class="card-header">Form User</h5>
                 <div class="card-body">
-                    {!! Form::model($model, ['route' => $route, 'method' => $method]) !!}
+                    {!! Form::model($modelPegawai, ['route' => $route, 'method' => $method]) !!}
                     <div class="form-group mt-3">
                         {!! Form::label('name', 'Nama') !!}
                         {!! Form::text('name', null, ['class' => 'form-control', 'autofocus']) !!}
@@ -18,18 +18,15 @@
                         <span class="text-danger">{{ $errors->first('email') }}</span>
                     </div>
                     <div class="form-group mt-3">
-                        {!! Form::label('akses', 'Hak Akses') !!}
-                        {!! Form::select(
-                            'akses',
-                            [
-                                'operator' => 'Operator',
-                                'admin' => 'Administrator',
-                            ],
-                            null,
-                            ['class' => 'form-control'],
-                        ) !!}
-                        <span class="text-danger">{{ $errors->first('akses') }}</span>
+                        <div class="radio">
+                            <label for="">Akses:</label>
+                            <label style="margin-left: 2px">{!! Form::radio('akses', 'admin') !!} Admin</label>
+                        </div>
+                        <div class="radio">
+                            <label style="margin-left: 52px">{!! Form::radio('akses', 'operator') !!} Operator</label>
+                        </div>
                     </div>
+                    <span class="text-danger">{{ $errors->first('akses') }}</span>
                     <div class="form-group mt-3">
                         {!! Form::label('password', 'Password') !!}
                         {!! Form::password('password', ['class' => 'form-control']) !!}

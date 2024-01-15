@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JangkauanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\BerandaAdminController;
 use App\Http\Controllers\PaketInternetController;
@@ -40,6 +41,7 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
     Route::resource('user', UserController::class );
     Route::resource('pelanggan', PelangganController::class);
     Route::resource('paket_internet', PaketInternetController::class);
+    Route::resource('jangkauan_internet', JangkauanController::class);
 });
 
 Route::prefix('operator')->middleware(['auth', 'auth.operator'])->group(function () {

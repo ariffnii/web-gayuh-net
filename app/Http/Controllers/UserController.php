@@ -16,10 +16,12 @@ class UserController extends Controller
      */
     public function index()
     {
+        $modelPegawai = Model::where('akses', '<>', 'pelanggan')
+        ->latest()
+        ->paginate(50);
         return view('admin.' . $this->viewIndex, [
-            'dataPegawai' => Model::where('akses', '<>', 'pelanggan')
-                ->latest()
-                ->paginate(50)
+            'dataPegawai' => $modelPegawai,
+            'routePrefix' => $this->routePrefix
         ]);
     }
 

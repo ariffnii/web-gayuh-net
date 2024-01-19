@@ -28,9 +28,14 @@
                     </div>
                     <span class="text-danger">{{ $errors->first('akses') }}</span>
                     <div class="form-group mt-3">
-                        {!! Form::label('password', 'Password') !!}
-                        {!! Form::password('password', ['class' => 'form-control']) !!}
-                        <span class="text-danger">{{ $errors->first('ppassword') }}</span>
+                            <label>Password</label>
+                            <div class="input-group">
+                                <input type="password" name="password" class="form-control" id="basic-default-password12"
+                                    placeholder="············" aria-describedby="basic-default-password2">
+                                <span id="basic-default-password2" class="input-group-text cursor-pointer"><i
+                                        class="bx bx-hide"></i></span>
+                            </div>
+                        <span class="text-danger">{{ $errors->first('password') }}</span>
                     </div>
                     <a href="{{ route('user.index') }}" class="btn btn-secondary mt-3 btn-sm">Kembali</a>
                     {!! Form::submit($button, ['class' => 'btn btn-primary mt-3 btn-sm']) !!}

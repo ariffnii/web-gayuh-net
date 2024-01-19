@@ -7,6 +7,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Pelanggan extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use SearchableTrait;
 
     protected $table = "pelanggan";
     protected $primaryKey ="id";
@@ -27,7 +29,14 @@ class Pelanggan extends Model
         'tanggal_lahir',
         'telepon',
         'jenis_kelamin',
-        'foto_profil',
+    ];
+    protected $searchable = [
+        'nama_depan',
+        'nama_belakang',
+        'alamat',
+        'tanggal_lahir',
+        'telepon',
+        'jenis_kelamin',
     ];
 
     public function user(){

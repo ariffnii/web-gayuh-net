@@ -21,7 +21,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;400;600&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -37,23 +38,23 @@
             <li><a href="">special deals</a></li>
             <li><a href="">E-official store</a></li>
             <li>
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ route('logout') }}" class="ctta">Foto</a>
-                    @else
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ctta">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+                @if (Route::has('login'))
+                    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                        @auth
+                            <a href="{{ route('logout') }}" class="ctta">Foto</a>
+                        @else
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ctta">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             </li>
         </ul>
 
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
-    
+
     <section class="hero">
         <div class="hero-text">
             <h5>#Welcome gayuh</h5>
@@ -63,12 +64,14 @@
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
+                        <a type="button" class="btn btn-primary" href="" data-bs-toggle="modal"
+                            data-bs-target="#searchModal">Cek</a>
+                        <!-- Modal Jangkauan-->
+                        <!-- End Modal-->
                         <a href="{{ route('logout') }}">Pilih Paket</a>
                     @else
-                        @if (Route::has('register'))
                         <a href="#">SHandy</a>
                         <a href="{{ route('login') }}" class="ctta"><i class="ri-login-box-fill"></i>Login ey</a>
-                        @endif
                     @endauth
                 </div>
             @endif
@@ -100,7 +103,8 @@
             <div class="col">
                 <h1>Internet Rumah dan Wi-Fi <br> serta TV Kabel Terbaik!</h1>
                 <p>Nikmati Juaranya Internet dan Wi-Fi di dalam rumah <br> yang cepat dan unlimited ditambah tayangan TV
-                    <br> berlangganan kualitas HD hingga 4K!</p>
+                    <br> berlangganan kualitas HD hingga 4K!
+                </p>
                 <h4>#LebihKencangLebihBebas</h4>
             </div>
         </div>
@@ -118,8 +122,12 @@
         <div class="square3"></div>
     </div>
 
-
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

@@ -13,12 +13,22 @@ class PaketInternetController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $searchPaket = (string) $request->input('searchPaket');
+        if ($searchPaket){
+            $modelPaket = Model::where('nama_paket', 'LIKE', "%{$searchPaket}%")
+            ->orWhere('kecepatan_download', 'LIKE', "%{$searchPaket}%")
+            ->orWhere('kecepatan_upload', 'LIKE', "%{$searchPaket}%")
+            ->orWhere('harga', 'LIKE', "%{$searchPaket}%")
+            ->paginate(50);
+        }
+        else {
+            $modelPaket = Model::latest()->paginate(50);
+        }
         return view('admin.' . $this->viewIndex, [
-            'dataPaket' => Model::
-                latest()
-                ->paginate(50)
+            'dataPaket' => $modelPaket,
+            'routePrefix' => $this->routePrefix
         ]);
     }
 

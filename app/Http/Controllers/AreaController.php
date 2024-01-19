@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Pelanggan as Model;
+use App\Models\JangkauanInternet as Model;
 
-
-class PelangganController extends Controller
+class AreaController extends Controller
 {
-    private $viewIndex = 'pelanggan_index';
-    private $viewCreate = 'pelanggan_form';
-    private $viewEdit = 'pelanggan_form';
-    private $routePrefix = 'pelanggan';
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
     }

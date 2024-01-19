@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JangkauanController;
-use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\BerandaAdminController;
 use App\Http\Controllers\PaketInternetController;
+use App\Http\Controllers\AdminPelangganController;
 use App\Http\Controllers\BerandaOperatorController;
 use App\Http\Controllers\BerandaPelangganController;
 
@@ -26,12 +27,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
     return view('landing-page');
 });
-Route::get('/beranda', function () {
-    return view('index');
-});
-Route::get('/gin', function () {
-    return view('auth.login-sneat');
-});
 
 Auth::routes();
 
@@ -39,7 +34,7 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
     //ini route untuk admin
     Route::get('beranda', [BerandaAdminController::class, 'index'])->name('admin.beranda');
     Route::resource('user', UserController::class );
-    Route::resource('pelanggan', PelangganController::class);
+    Route::resource('pelanggan', AdminPelangganController::class);
     Route::resource('paket_internet', PaketInternetController::class);
     Route::resource('jangkauan_internet', JangkauanController::class);
 });

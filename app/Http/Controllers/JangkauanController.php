@@ -14,12 +14,20 @@ class JangkauanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $searchJangkauan = (string) $request->input('searchJangkauan');
+        if ($searchJangkauan){
+            $modelJangkauan = Model::where('nama_kelurahan', 'LIKE', "%{$searchJangkauan}%")
+            ->orWhere('ketersediaan_internet', 'LIKE', "%{$searchJangkauan}%")
+            ->paginate(50);
+        }
+        else {
+            $modelJangkauan = Model::latest()->paginate(50);
+        }
         return view('admin.' . $this->viewIndex, [
-            'dataJangkauan' => Model::
-                latest()
-                ->paginate(50)
+            'dataJangkauan' => $modelJangkauan,
+            'routePrefix' => $this->routePrefix
         ]);
     }
 
@@ -99,4 +107,6 @@ class JangkauanController extends Controller
         flash("Data Berhasil Dihapus");
         return back();
     }
+
+
 }

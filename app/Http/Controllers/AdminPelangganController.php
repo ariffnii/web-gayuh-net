@@ -2,23 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Pelanggan as Model;
 
 
-class PelangganController extends Controller
+class AdminPelangganController extends Controller
 {
     private $viewIndex = 'pelanggan_index';
-    private $viewCreate = 'pelanggan_form';
-    private $viewEdit = 'pelanggan_form';
     private $routePrefix = 'pelanggan';
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $searchPelanggan = (string) $request->input('searchPelanggan');
+        if ($searchPelanggan){
+            $modelPelanggan = Model::where('nama_depan', 'LIKE', "%{$searchPelanggan}%")
+            ->orWhere('nama_belakang', 'LIKE', "%{$searchPelanggan}%")
+            ->orWhere('alamat', 'LIKE', "%{$searchPelanggan}%")
+            ->orWhere('telepon', 'LIKE', "%{$searchPelanggan}%")
+            ->paginate(50);
+        }
+        else {
+            $modelPelanggan = Model::latest()->paginate(50);
+        }
+        return view('admin.' . $this->viewIndex, [
+            'dataPelanggan' => $modelPelanggan,
+            'routePrefix' => $this->routePrefix
+        ]);
     }
 
     /**
@@ -66,6 +78,9 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $modelPelanggan = Model::findOrFail($id);
+        $modelPelanggan->delete();
+        flash("Data Berhasil Dihapus");
+        return back();
     }
 }

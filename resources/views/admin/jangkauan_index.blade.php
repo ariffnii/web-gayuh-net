@@ -7,6 +7,14 @@
                 <h5 class="card-header">Data Jangkauan Area Internet</h5>
                 <div class="card-body">
                     <a href="{{ route('jangkauan_internet.create') }}" class="btn btn-primary mb-3"> Tambah Data</a>
+                    {!! Form::open(['route' => $routePrefix . '.index', 'method' => 'GET']) !!}
+                    <div class="input-group mb-3">
+                        <input type="text" name="searchJangkauan" class="form-control" placeholder="Search"
+                            aria-label="" aria-describedby="button-addon2" value="{{ request('searchJangkauan') }}">
+                        <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
+                            class="bx bx-search"></i></button>
+                    </div>
+                    {!! Form::close() !!}
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>

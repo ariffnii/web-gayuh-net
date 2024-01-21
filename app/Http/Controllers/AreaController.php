@@ -7,12 +7,26 @@ use App\Models\JangkauanInternet as Model;
 
 class AreaController extends Controller
 {
+    private $viewIndex = 'jangkauan_index';
+    private $routePrefix = 'pelanggan.jangkauan_internet';
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        //
+        $searchJangkauan = (string) $request->input('searchJangkauan');
+        if ($searchJangkauan){
+            $modelJangkauan = Model::where('nama_kelurahan', 'LIKE', "%{$searchJangkauan}%")
+            ->orWhere('ketersediaan_internet', 'LIKE', "%{$searchJangkauan}%")
+            ->paginate(50);
+        }
+        else {
+            $modelJangkauan = Model::latest()->paginate(50);
+        }
+        return view('pelanggan.' . $this->viewIndex, [
+            'dataJangkauan' => $modelJangkauan,
+            'routePrefix' => $this->routePrefix
+        ]);
     }
 
     /**

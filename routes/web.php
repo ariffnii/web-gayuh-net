@@ -44,9 +44,10 @@ Route::prefix('operator')->middleware(['auth', 'auth.operator'])->group(function
     Route::get('beranda', [BerandaOperatorController::class, 'index'])->name('operator.beranda');
 });
 
-Route::prefix('pelanggan')->middleware(['auth', 'auth.pelanggan'])->group(function () {
+Route::prefix('pelanggan')->middleware(['auth', 'auth.pelanggan'])->name('pelanggan.')->group(function () {
     //ini route untuk pelanggan
-    Route::get('beranda', [BerandaPelangganController::class, 'index'])->name('pelanggan.beranda');
+    Route::get('beranda', [BerandaPelangganController::class, 'index'])->name('beranda');
+    Route::resource('jangkauan_internet', AreaController::class);
 });
 
 Route::get('logout', function () {
